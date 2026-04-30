@@ -9,39 +9,42 @@
     <script defer src="app.js?v=3"></script>
 </head>
 <body>
-    <div class="header">
-        <div class="header-top">
-            <span class="header-title">Finances</span>
-            <span class="header-status">
-                <span class="status-dot"></span>
-                ONLINE
-            </span>
-            <select id="DateSelection">
-                //Code adds these options here
-            </select>
+    <div class="shell">
+        <div class="header">
+            <div class="header-top">
+                <span class="header-title">Finances</span>
+                <span class="header-status">
+                    <span class="status-dot"></span>
+                    ONLINE
+                </span>
+            </div>
+            <div class="header-sub">SESSION_ID: A3F9-22B1 &nbsp;·&nbsp; 04.30.2026</div>
+            <div class="prompt-line">
+                root@dashboard:~$ <span class="cursor"></span>
+            </div>
         </div>
-        <div class="header-sub">SESSION_ID: A3F9-22B1 &nbsp;·&nbsp; 04.30.2026</div>
-        <div class="prompt-line">
-            root@dashboard:~$ <span class="cursor"></span>
-        </div>
-    </div>
-
-    <div class="stat" style="text-align: center;">
-        <div class="stat-label">Paycheck</div>
-        <div class="stat-value sm" style="font-size: 64px" id="paycheckAmount"></div>
-        <div class="stat-unit">USD</div>
-    </div>
-    <div class="section-label">// Big Numbers</div>
-    <div class="grid-2">
-        <div class="stat">
-            <div class="stat-label">Money to withdrawal:</div>
-            <div class="stat-value sm" id="withdrawalAmount">0</div>
+        
+        <div class="stat" style="text-align: center;">
+            <select id="DateSelection" style="margin: 4%">
+            //Code adds these options here
+        </select>
+            <div class="stat-label">Paycheck</div>
+            <div class="stat-value sm" style="font-size: 64px" id="paycheckAmount"></div>
             <div class="stat-unit">USD</div>
         </div>
-        <div class="stat">
-            <div class="stat-label">out</div>
-            <div class="stat-value sm">840M</div>
-            <div class="stat-unit">tx/s</div>
+        <div class="section-label">// Big Numbers</div>
+        <div class="grid-2">
+            <div class="stat">
+                <div class="stat-label">Money to withdrawal:</div>
+                <div class="stat-value sm" id="withdrawalAmount">0</div>
+                <div class="stat-unit">USD</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">out</div>
+                <div class="stat-value sm">840M</div>
+                <div class="stat-unit">tx/s</div>
+            </div>
         </div>
     </div>
+    
 </body>

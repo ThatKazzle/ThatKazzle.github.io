@@ -202,6 +202,24 @@
   }
   .stat-delta.neg { color: #ff4d6d; border-color: #ff4d6d44; background: #ff4d6d11; }
  
+  SELECT { 
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--green-dim);
+    text-transform: uppercase;
+    align-items: center;
+    background: var(--green-subtle);
+  }
+  OPTION { 
+    font-family: var(--font-display);
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--green-dim);
+    text-transform: uppercase;
+    align-items: center;
+    background: var(--green-subtle);
+  }
   /* ─── WIDE STAT (full-width, horizontal layout) ─── */
   .stat-wide {
     display: flex;
