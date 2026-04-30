@@ -27,7 +27,7 @@
     background: var(--bg);
     color: var(--green);
     font-family: var(--font-mono);
-    font-size: 14px;
+    font-size: 28px;
     overflow-x: hidden;
   }
  
@@ -76,7 +76,7 @@
   }
   .header-title {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 56px;
     letter-spacing: 2px;
     text-shadow: 0 0 10px var(--green);
     line-height: 1;
@@ -85,7 +85,7 @@
     display: flex;
     align-items: center;
     gap: 6px;
-    font-size: 11px;
+    font-size: 22px;
     color: var(--green-dim);
   }
   .status-dot {
@@ -96,13 +96,13 @@
     animation: pulse 2s ease-in-out infinite;
   }
   .header-sub {
-    font-size: 11px;
+    font-size: 22px;
     color: var(--green-dim);
     letter-spacing: 1px;
   }
   .prompt-line {
     margin-top: 10px;
-    font-size: 12px;
+    font-size: 24px;
     color: var(--green-dim);
     display: flex;
     align-items: center;
@@ -119,7 +119,7 @@
  
   /* ─── SECTION LABEL ─── */
   .section-label {
-    font-size: 11px;
+    font-size: 22px;
     letter-spacing: 2px;
     color: var(--green-dim);
     text-transform: uppercase;
@@ -168,7 +168,7 @@
     opacity: 0.5;
   }
   .stat-label {
-    font-size: 10px;
+    font-size: 20px;
     letter-spacing: 1.5px;
     color: var(--green-dim);
     text-transform: uppercase;
@@ -179,21 +179,21 @@
   }
   .stat-value {
     font-family: var(--font-display);
-    font-size: 32px;
+    font-size: 64px;
     line-height: 1;
     text-shadow: 0 0 8px var(--green);
     letter-spacing: 1px;
   }
-  .stat-value.sm { font-size: 22px; }
+  .stat-value.sm { font-size: 44px; }
   .stat-unit {
-    font-size: 11px;
+    font-size: 22px;
     color: var(--green-dim);
     margin-top: 2px;
   }
   .stat-delta {
     position: absolute;
     top: 10px; right: 10px;
-    font-size: 10px;
+    font-size: 20px;
     color: var(--green);
     background: var(--green-subtle);
     border: 1px solid var(--green-border);
@@ -204,7 +204,7 @@
  
   SELECT { 
     font-family: var(--font-display);
-    font-size: 11px;
+    font-size: 22px;
     letter-spacing: 2px;
     color: var(--green-dim);
     text-transform: uppercase;
@@ -213,7 +213,7 @@
   }
   OPTION { 
     font-family: var(--font-display);
-    font-size: 11px;
+    font-size: 22px;
     letter-spacing: 2px;
     color: var(--green-dim);
     text-transform: uppercase;
@@ -250,7 +250,7 @@
     padding: 12px 14px;
     background: var(--bg-panel);
     box-shadow: var(--green-glow);
-    font-size: 12px;
+    font-size: 24px;
     line-height: 1.8;
     color: var(--green-dim);
   }
