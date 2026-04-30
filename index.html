@@ -1,174 +1,47 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<link rel="stylesheet" href="style2.css">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>PayLens</title>
-  <meta name="theme-color" content="#60a5fa" />
-  <link rel="manifest" href="./manifest.json" />
-  <link rel="icon" href="./icon.svg" type="image/svg+xml" />
-  <link rel="stylesheet" href="./styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TERMINAL DASHBOARD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+    <script defer src="main.js"></script>
 </head>
 <body>
-  <main class="app">
-    <header class="topbar panel">
-      <div class="brand">
-        <div class="logo">P</div>
-        <div>
-          <h1>PayLens</h1>
+    <div class="header">
+        <div class="header-top">
+            <span class="header-title">Finances</span>
+            <span class="header-status">
+                <span class="status-dot"></span>
+                ONLINE
+            </span>
+            <select id="DateSelection">
+                //Code adds these options here
+            </select>
         </div>
-      </div>
-      <div class="status">
-        <div id="statusBadge" class="badge">Loading sheet…</div>
-        <div id="statusText" class="subtle">Connecting to your spreadsheet.</div>
-        <div id="appLastUpdated" class="subtle"></div>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="hero-main panel">
-        <div class="hero-title">
-          <div>
-            <h2 id="periodTitle">Pay period</h2>
-            <div id="periodDates" class="dates">—</div>
-          </div>
-          <div id="periodMeta" class="badge">—</div>
+        <div class="header-sub">SESSION_ID: A3F9-22B1 &nbsp;·&nbsp; 04.30.2026</div>
+        <div class="prompt-line">
+            root@dashboard:~$ <span class="cursor"></span>
         </div>
-
-        <div class="progress-wrap" style="margin-top: 16px;">
-          <div class="progress-box">
-            <div class="progress-head">
-              <strong>Pay period progress</strong>
-              <span id="periodPct">—</span>
-            </div>
-            <div class="progress-bar"><div id="periodFill" class="progress-fill"></div></div>
-          </div>
-          <div class="progress-box">
-            <div class="progress-head">
-              <strong>Spending pace</strong>
-              <span id="spendPct">—</span>
-            </div>
-            <div class="progress-bar"><div id="spendFill" class="progress-fill"></div></div>
-          </div>
-          <div class="progress-box">
-            <div class="progress-head">
-              <strong>Cash pullout</strong>
-              <span id="cashPct">—</span>
-            </div>
-            <div class="progress-bar"><div id="cashFill" class="progress-fill"></div></div>
-          </div>
-        </div>
-      </div>
-
-      <aside class="hero-right panel">
-        <div>
-          <div class="small-muted">What the app does</div>
-          <h3 style="margin: 6px 0 10px;">Live reads your sheet, then keeps only the current pay period in view.</h3>
-          <div class="small-muted">It stores tracker notes locally on your phone, so your budget sheet stays read-only.</div>
-        </div>
-        <div class="small-muted">
-          Suggested GitHub Pages setup: put these files in the repo root, then enable Pages on the main branch.
-        </div>
-      </aside>
-    </section>
-
-    <section class="kpis">
-      <div class="kpi">
-        <div class="label">Paycheck</div>
-        <div class="value" id="kpiPaycheck">$0</div>
-        <div class="meta">Incoming pay for the active period.</div>
-      </div>
-      <div class="kpi cash">
-        <div class="label">Cash to withdraw</div>
-        <div class="value" id="kpiCashOut">$0</div>
-        <div class="meta">Money that should leave the account and become cash.</div>
-      </div>
-      <div class="kpi spending">
-        <div class="label">Spending money</div>
-        <div class="value" id="kpiSpending">$0</div>
-        <div class="meta">Your trackable green money for the period.</div>
-      </div>
-      <div class="kpi savings">
-        <div class="label">Savings</div>
-        <div class="value" id="kpiSavings">$0</div>
-        <div class="meta">Automatically grouped savings dollars.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Need to keep</div>
-        <div class="value" id="kpiKeep">$0</div>
-        <div class="meta">Bills and obligations you should not treat as spendable.</div>
-      </div>
-      <div class="kpi">
-        <div class="label">Spending left</div>
-        <div class="value" id="kpiLeft">$0</div>
-        <div class="meta">Spending money minus your local tracker entries.</div>
-      </div>
-    </section>
-
-    <section class="grid-two">
-      <div class="panel section">
-        <h3>Tracker and pacing</h3>
-        <div class="tracker">
-          <form id="trackerForm">
-            <input id="spendAmount" type="number" min="0.01" step="0.01" placeholder="Amount" />
-            <input id="spendNote" type="text" placeholder="What was it for?" />
-            <button type="submit">Add spend</button>
-            <button id="resetBtn" type="button" class="secondary">Reset period tracker</button>
-          </form>
-          <div class="quick" id="quickButtons">
-            <button type="button" class="secondary" data-quick-amt="5">$5</button>
-            <button type="button" class="secondary" data-quick-amt="10">$10</button>
-            <button type="button" class="secondary" data-quick-amt="20">$20</button>
-            <button type="button" class="secondary" data-quick-amt="40">$40</button>
-          </div>
-          <div class="row">
-            <div class="left">
-              <div class="name">Days left</div>
-              <div class="note">Auto-switches to the next period on the next date.</div>
-            </div>
-            <div class="amt" id="daysLeft">—</div>
-          </div>
-          <div class="row">
-            <div class="left">
-              <div class="name">Safe daily spend</div>
-              <div class="note">Rough target from remaining spending money divided by remaining days.</div>
-            </div>
-            <div class="amt" id="safeDaily">—</div>
-          </div>
-          <div class="row">
-            <div class="left">
-              <div class="name">Spending remaining</div>
-              <div class="note">The live number your tracker subtracts from.</div>
-            </div>
-            <div class="amt" id="spendRemaining">—</div>
-          </div>
-          <div id="spendLog" class="log"></div>
-        </div>
-      </div>
-
-      <div class="panel section">
-        <h3>Budget row map</h3>
-        <div class="small-muted">You can reclassify rows locally without touching the sheet. Those choices stay on the phone.</div>
-        <div style="overflow:auto; margin-top: 10px;">
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Line item</th>
-                <th>Amount</th>
-                <th>Bucket</th>
-              </tr>
-            </thead>
-            <tbody id="itemsBody"></tbody>
-          </table>
-        </div>
-      </div>
-    </section>
-
-    <div class="footer">
-      To use the live sheet, the spreadsheet must be viewable to the browser. If the request fails, the app falls back to the local demo snapshot taken from the workbook you uploaded.
     </div>
-  </main>
 
-  <script src="./app.js"></script>
+    <div class="stat" style="text-align: center;">
+        <div class="stat-label">Paycheck</div>
+        <div class="stat-value sm" style="font-size: 64px" id="paycheckAmount"></div>
+        <div class="stat-unit">USD</div>
+    </div>
+    <div class="section-label">// Big Numbers</div>
+    <div class="grid-2">
+        <div class="stat">
+            <div class="stat-label">Money to withdrawal:</div>
+            <div class="stat-value sm" id="withdrawalAmount">0</div>
+            <div class="stat-unit">USD</div>
+        </div>
+        <div class="stat">
+            <div class="stat-label">out</div>
+            <div class="stat-value sm">840M</div>
+            <div class="stat-unit">tx/s</div>
+        </div>
+    </div>
 </body>
-</html>
