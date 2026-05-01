@@ -4,7 +4,8 @@ var dropdownList;
 var selectedDateColumn = "D";
 var numberLocations = {
   paycheck: 2,
-  withdrawals: [6, 8]
+  withdrawals: [6, 8],
+  variableExpenses: [5, 7, 9] 
 }
 
 async function getSheetCell(sheetId, sheetName, cell) {
@@ -140,7 +141,15 @@ function setValues() {
   for (var i = 0; i < numberLocations.withdrawals.length; i++) {
     totalWithdrawalAmount = totalWithdrawalAmount + parseCurrency(getCellA1(selectedDateColumn + numberLocations.withdrawals[i]));
   }
+
   document.getElementById("withdrawalAmount").innerHTML = formatter.format(totalWithdrawalAmount);
+
+  var totalVExpenses = 0;
+  for (var k = 0; k < numberLocations.variableExpenses.length; k++) {
+    totalVExpenses = totalVExpenses + parseCurrency(getCellA1(selectedDateColumn + numberLocations.variableExpenses[k]));
+  }
+  
+  document.getElementById("variableExpenses").innerHTML = formatter.format(totalVExpenses);
 }
 
 function implementListeners() {

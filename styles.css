@@ -258,7 +258,65 @@
   .log-box .log-ok { color: #00ff88; }
   .log-box .log-warn { color: #f0c040; }
   .log-box .log-err { color: #ff4d6d; }
- 
+
+  /*----- This is the checkbox code-----*/
+ /* ─── TERMINAL CHECKBOX ─── */
+
+.term-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  user-select: none;
+  font-size: 22px;
+  letter-spacing: 2px;
+  color: var(--green-dim);
+}
+
+/* hide default checkbox */
+.term-check input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* custom box */
+.check-ui {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--green-border);
+  border-radius: 4px;
+  background: var(--green-faint);
+  box-shadow: var(--green-glow);
+  position: relative;
+  transition: all 0.15s ease;
+}
+
+/* hover glow */
+.term-check:hover .check-ui {
+  box-shadow: var(--green-glow-strong);
+}
+
+/* check mark */
+.check-ui::after {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  background: var(--green);
+  box-shadow: 0 0 6px var(--green);
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+
+/* checked state */
+.term-check input:checked + .check-ui::after {
+  opacity: 1;
+}
+
+/* active press feel */
+.term-check:active .check-ui {
+  background: var(--green-subtle);
+}
   /* ─── ANIMATIONS ─── */
   @keyframes blink {
     0%, 100% { opacity: 1; }
