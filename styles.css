@@ -8,13 +8,20 @@
     --green-border: #00ff8855;
     --green-glow: 0 0 8px #00ff8866, 0 0 20px #00ff8822;
     --green-glow-strong: 0 0 6px #00ff88aa, 0 0 16px #00ff8844;
+    --red: #ff0008;
+    --red-dim: #cc000a;
+    --red-faint: #ff000818;
+    --red-subtle: #ff000830;
+    --red-border: #ff000855;
+    --red-glow: 0 0 8px #ff000866, 0 0 20px #ff000822;
+    --red-glow-strong: 0 0 6px #ff0008aa, 0 0 16px #ff000844;
     --bg: #060b08;
     --bg-panel: #080f0a;
     --scanline: repeating-linear-gradient(
       to bottom,
       transparent 0px,
       transparent 3px,
-      rgba(0,0,0,0.07) 3px,
+      rgba(0, 255, 0, 0.5) 3px,
       rgba(0,0,0,0.07) 4px
     );
     --font-mono: 'Share Tech Mono', monospace;
